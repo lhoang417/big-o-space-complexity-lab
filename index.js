@@ -253,20 +253,22 @@ class Factorial {
     this.cache = {};
   }
   calcFac(num){
-    if(this.cache = num){
-      return num
+    if(this.cache[num]){
+      return this.cache[num]
     }else{
-      
-       for(let i = 0; i < num.length; i++){
-        let answer = num * num-- 
-        Factorial.cache = answer
-        return answer
-    }}
+      let answer = num//initialized answer to equal num
+      for(let i = num - 1; i >= 1; i--){//letting i = num -1 is(if 4 is num, then i is 3), i >=1 and i--, iterating backwards starting at 3 until i greater than or equal to 1
+        answer *= i // stating that everytime it iterates, multiply the original answer(4) times i(3, then 2, then 1)
+            
+    }
+    this.cache[num] = answer//creating a new property called num and equating it to the answer
+    return answer//returning the answer
+  }
   }
 }
+const facInstance = new Factorial()//creating new object in the Factorial class called facInstance
+facInstance.calcFac(4)//calling on the function within the class
 
-const John = new Factorial()
-John.calcFac()
 /* 
   We want to test a non-memoized version of this too, 
   so copy and paster your calcFac function and save it 
